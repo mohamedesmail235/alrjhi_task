@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include alrjhi_task *.css
+recursive-include alrjhi_task *.csv
+recursive-include alrjhi_task *.html
+recursive-include alrjhi_task *.ico
+recursive-include alrjhi_task *.js
+recursive-include alrjhi_task *.json
+recursive-include alrjhi_task *.md
+recursive-include alrjhi_task *.png
+recursive-include alrjhi_task *.py
+recursive-include alrjhi_task *.svg
+recursive-include alrjhi_task *.txt
+recursive-exclude alrjhi_task *.pyc
