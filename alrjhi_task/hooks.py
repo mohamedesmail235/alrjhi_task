@@ -13,7 +13,9 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+app_include_js = [
+	# "https://maps.googleapis.com/maps/api/js?key=AIzaSyBy3hqV3Wc6wx1qWH-kAqdB7F5X9iKW97c&callback=initMap",
+]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/alrjhi_task/css/alrjhi_task.css"
 # app_include_js = "/assets/alrjhi_task/js/alrjhi_task.js"
