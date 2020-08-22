@@ -4,12 +4,20 @@
 
 frappe.ui.form.on('Address RJ', {
     onload: function (frm) {
-        setTimeout(() => {
-            $('button.run-map.hidden').click();
-        }, 2500);
+        if (!$('#google-map-lib').length) {
+            $('head').append('<script defer id="google-map-lib" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy3hqV3Wc6wx1qWH-kAqdB7F5X9iKW97c"></script>');
+        }
     },
     location: function (frm) {
+
+        setTimeout(() => {
+            initMap();
+        }, 2500);
+
         get_location(frm);
+    },
+    validate: function (frm) {
+        frappe.ui.toolbar.clear_cache();
     }
 
 });
@@ -23,17 +31,10 @@ let get_location = function (frm) {
                 "label": "Location",
                 "fieldname": "map_location",
                 "fieldtype": "HTML",
-                "options": "<div style=\"width:100%; height: 400px;\"><div style=\"height:300px;\" id=\"map\"></div><button class=\"run-map hidden\">Run Map</button> </div><script defer src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyBy3hqV3Wc6wx1qWH-kAqdB7F5X9iKW97c\"></script> "
+                "options": "<div style=\"width:100%; height: 400px;\"><div style=\"height:300px;\" id=\"map\"></div></div>"
 
             }
         ],
-        // primary_action: function () {
-        //     var data = d.get_values();
-        //
-        //
-        //     d.hide();
-        // },
-        // primary_action_label: __("Get lat & lon")
     });
     d.show();
 }
@@ -44,7 +45,9 @@ $(document).on('click', '.run-map', function () {
 
 
 function initMap() {
-    var myLatlng = {lat: -25.363, lng: 131.044};
+    let lat = cur_frm.doc.lat || 23.79858110348652;
+    let lng = cur_frm.doc.lon || 45.43356387602057;
+    var myLatlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
 
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 4, center: myLatlng});
@@ -69,6 +72,6 @@ function initMap() {
         cur_frm.set_value('lat', position[0]);
         cur_frm.set_value('lon', position[1]);
 
-        refresh_many(["lat", "lon"])
+        refresh_many(["lat", "lon"]);
     });
 }

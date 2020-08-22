@@ -11,10 +11,10 @@ app_color = "grey"
 app_email = "m-i-m@live.com"
 app_license = "MIT"
 
-# Includes in <head>
+# Includes in <head>s
 # ------------------
 app_include_js = [
-	# "https://maps.googleapis.com/maps/api/js?key=AIzaSyBy3hqV3Wc6wx1qWH-kAqdB7F5X9iKW97c&callback=initMap",
+    # "https://maps.googleapis.com/maps/api/js?key=AIzaSyBy3hqV3Wc6wx1qWH-kAqdB7F5X9iKW97c"
 ]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/alrjhi_task/css/alrjhi_task.css"
@@ -128,4 +128,3 @@ app_include_js = [
 # override_doctype_dashboards = {
 # 	"Task": "alrjhi_task.task.get_dashboard_data"
 # }
-
